@@ -3,19 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <!-- favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400&display=swap" rel="stylesheet" />
+
+    <!-- website styles -->
+    <link rel="stylesheet" href="style.css" />
 
     <title>Frontend Mentor | Pod request access landing page</title>
   </head>
   <body>
-    <header>
-      <img src="./assets/desktop/logo.svg" alt="pod logo" />
-      <div class="company-name">pod</div>
-    </header>
     <main>
-      <section>
-        <h1>Publish your podcasts everywhere.</h1>
+      <div class="logo">
+        <img src="./assets/desktop/logo.svg" alt="pod logo" />
+      </div>
+      <section class="main-signup-section">
+        <h1>Publish your podcasts <span>everywhere.</span></h1>
         <p>
           Upload your audio to Pod with a single click. We’ll then distribute your podcast to Spotify, Apple Podcasts,
           Google Podcasts, Pocket Casts and more!
@@ -36,7 +43,7 @@
       <picture>
         <source media="(max-width:375px )" srcset="./assets/mobile/image-host.jpg" sizes="" />
         <source media="(max-width:768px )" srcset="./assets/tablet/image-host.jpg" sizes="" />
-        <img src="./assets/desktop/image-host.jpg" alt="" />
+        <img src="./assets/desktop/image-host.jpg" alt="" class="img-host" />
       </picture>
     </main>
   </body>
