@@ -1,0 +1,78 @@
+:root {
+  --ff-primary: "Chivo", sans-serif;
+
+  --clr-primary: hsl(157, 74%, 62%);
+  --clr-secondary: hsl(225, 26%, 23%);
+  --clr-bg: hsl(224, 35%, 11%);
+  --clr-primary-accent: #fff;
+  --clr-body-text: #c2cbe5;
+  --clr-other-company: #5a668a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+p {
+  font-family: var(--ff-primary);
+  font-weight: 300;
+  text-align: center;
+}
+
+/* controlling clamp size based on tablet width of 768px */
+h1 {
+  font-size: clamp(1.6875rem, 6.25vw, 3.25rem);
+  line-height: clamp(2.375rem, 7.29vw, 3.875rem);
+  text-transform: uppercase;
+  color: var(--clr-primary);
+}
+
+h1 span {
+  color: var(--clr-primary-accent);
+}
+
+p {
+  font-size: clamp(0.9375rem, 2.34vw, 1.125rem);
+  line-height: clamp(1.5625rem, 3.65vw, 1.75rem);
+  width: clamp(20.4375rem, 5.79vw, 27.8125rem);
+  color: var(--clr-body-text);
+}
+
+body {
+  background-color: var(--clr-bg);
+  /* display: grid; */
+  /* grid-template-columns: repeat(2, minmax(1fr, 50%)); */
+  /* grid-template-rows: repeat(2, minmax(1fr, 50%)); */
+}
+
+.logo {
+  margin: 3.875rem auto 0 auto;
+  height: 175px;
+  width: 135px;
+}
+
+.main-signup-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  position: relative;
+  /* z-index: 1; */
+  /* background-color: var(--clr-bg); */
+}
+
+.img-host {
+  /* grid-column: 1 / 4; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  display: none;
+}
