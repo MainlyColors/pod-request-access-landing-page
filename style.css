@@ -2,8 +2,8 @@
   --ff-primary: "Chivo", sans-serif;
 
   --clr-primary: hsl(157, 74%, 62%);
-  --clr-secondary: hsl(225, 26%, 23%);
-  --clr-bg: hsl(224, 35%, 11%);
+  --clr-secondary: #2c334b;
+  --clr-bg: hsl(225, 36%, 11%);
   --clr-primary-accent: #fff;
   --clr-body-text: #c2cbe5;
   --clr-other-company: #5a668a;
@@ -66,6 +66,45 @@ main {
   position: relative;
   /* z-index: 1; */
   /* background-color: var(--clr-bg); */
+}
+
+.supported-companies-logos {
+  display: flex;
+  align-items: center;
+  order: 3;
+}
+
+.spotify-logo {
+  width: clamp(3.5rem, 12.5vw, 6rem);
+  height: auto;
+}
+
+.apple-podcast-logo {
+  width: clamp(2.8125rem, 10.2vw, 4.875rem);
+  height: auto;
+}
+
+.google-podcast-logo {
+  width: clamp(4.5625rem, 16.3vw, 7.8125rem);
+  height: clamp(0.6875rem, 2.3vw, 1.125rem);
+}
+
+.pocket-casts-logo {
+  width: clamp(4.8125rem, 16.8vw, 7.875rem);
+  height: clamp(0.9375rem, 3.38vw, 1.625rem);
+}
+
+.email-container {
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: ;
+}
+
+.email-container input {
+  background-color: var(--clr-secondary);
+  border: unset;
 }
 
 .img-host {
