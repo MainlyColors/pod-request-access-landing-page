@@ -97,14 +97,38 @@ main {
 .email-container {
   display: flex;
   flex-direction: column;
-  font-weight: 400;
-  font-size: 0.875rem;
-  line-height: ;
+  gap: 16px;
 }
 
 .email-container input {
   background-color: var(--clr-secondary);
   border: unset;
+  width: 327px;
+  height: 46px;
+  border-radius: 28px;
+  font: unset;
+}
+
+.email-container input::placeholder {
+  color: var(--clr-primary-accent);
+  opacity: 0.5;
+  padding-left: 1.8125rem;
+  font-family: var(--ff-primary);
+  font-weight: bold;
+  font-size: 0.875rem;
+  line-height: 1.75rem;
+}
+
+.email-container button {
+  background-color: var(--clr-primary);
+  border: unset;
+  width: 327px;
+  height: 46px;
+  border-radius: 28px;
+  font-family: var(--ff-primary);
+  font-weight: bold;
+  font-size: 0.875rem;
+  line-height: 1.75rem;
 }
 
 .img-host {
