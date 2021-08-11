@@ -26,10 +26,12 @@ p {
 
 /* controlling clamp size based on tablet width of 768px */
 h1 {
+  margin-bottom: 1rem;
   font-size: clamp(1.6875rem, 6.25vw, 3.25rem);
   line-height: clamp(2.375rem, 7.29vw, 3.875rem);
   text-transform: uppercase;
   color: var(--clr-primary);
+  order: 1;
 }
 
 h1 span {
@@ -37,10 +39,12 @@ h1 span {
 }
 
 p {
+  margin-bottom: 2.0625rem;
   font-size: clamp(0.9375rem, 2.34vw, 1.125rem);
   line-height: clamp(1.5625rem, 3.65vw, 1.75rem);
   width: clamp(20.4375rem, 5.79vw, 27.8125rem);
   color: var(--clr-body-text);
+  order: 2;
 }
 
 body {
@@ -51,11 +55,14 @@ body {
 }
 
 .logo {
-  margin: 3.875rem auto 0 auto;
-  height: 175px;
+  /* height: 175px; */
   width: 135px;
+  margin: 0 auto;
 }
 
+.logo img {
+  margin: 3.875rem auto 3.5625rem auto;
+}
 .main-signup-section {
   display: flex;
   flex-direction: column;
@@ -64,11 +71,14 @@ body {
 
 main {
   position: relative;
+  min-height: 100vh;
+
   /* z-index: 1; */
   /* background-color: var(--clr-bg); */
 }
 
 .supported-companies-logos {
+  margin-bottom: 3rem;
   display: flex;
   align-items: center;
   order: 3;
@@ -80,16 +90,19 @@ main {
 }
 
 .apple-podcast-logo {
+  margin-left: clamp(1.4375rem, 5.2vw, 2.5rem);
   width: clamp(2.8125rem, 10.2vw, 4.875rem);
   height: auto;
 }
 
 .google-podcast-logo {
+  margin-left: clamp(1.5625rem, 5.3vw, 2.5625rem);
   width: clamp(4.5625rem, 16.3vw, 7.8125rem);
   height: clamp(0.6875rem, 2.3vw, 1.125rem);
 }
 
 .pocket-casts-logo {
+  margin-left: clamp(1rem, 5.3vw, 1.6875rem);
   width: clamp(4.8125rem, 16.8vw, 7.875rem);
   height: clamp(0.9375rem, 3.38vw, 1.625rem);
 }
@@ -98,6 +111,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  order: 4;
 }
 
 .email-container input {
@@ -129,6 +143,17 @@ main {
   font-weight: bold;
   font-size: 0.875rem;
   line-height: 1.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.email-container button:hover {
+  background-color: #b3ffe2;
+  transition: transform 0.1s;
+}
+
+.email-container button:active {
+  transform: scale(0.95);
 }
 
 .img-host {
@@ -137,5 +162,7 @@ main {
   top: 0;
   right: 0;
   z-index: -1;
-  display: none;
+  opacity: 0.05;
+  mix-blend-mode: normal;
+  /* display: none; */
 }
