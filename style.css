@@ -3,7 +3,7 @@
 
   --clr-primary: hsl(157, 74%, 62%);
   --clr-secondary: #2c334b;
-  --clr-bg: hsl(225, 36%, 11%);
+  --clr-bg: #121726;
   --clr-primary-accent: #fff;
   --clr-body-text: #c2cbe5;
   --clr-other-company: #5a668a;
@@ -26,7 +26,7 @@ p {
 
 /* controlling clamp size based on tablet width of 768px */
 h1 {
-  margin-bottom: 1rem;
+  margin-bottom: clamp(1rem, 4.04vw, 1.9375rem);
   font-size: clamp(1.6875rem, 6.25vw, 3.25rem);
   line-height: clamp(2.375rem, 7.29vw, 3.875rem);
   text-transform: uppercase;
@@ -39,10 +39,10 @@ h1 span {
 }
 
 p {
-  margin-bottom: 2.0625rem;
+  margin-bottom: clamp(2.0625rem, 5.21vw, 2.5rem);
   font-size: clamp(0.9375rem, 2.34vw, 1.125rem);
   line-height: clamp(1.5625rem, 3.65vw, 1.75rem);
-  width: clamp(20.4375rem, 5.79vw, 27.8125rem);
+  width: clamp(20.4375rem, 57.9vw, 27.8125rem);
   color: var(--clr-body-text);
   order: 2;
 }
@@ -56,7 +56,7 @@ body {
 
 .logo {
   /* height: 175px; */
-  width: 135px;
+  width: 8.4375rem;
   margin: 0 auto;
 }
 
@@ -72,9 +72,7 @@ body {
 main {
   position: relative;
   min-height: 100vh;
-
-  /* z-index: 1; */
-  /* background-color: var(--clr-bg); */
+  max-width: 79.6875rem;
 }
 
 .supported-companies-logos {
@@ -82,11 +80,13 @@ main {
   display: flex;
   align-items: center;
   order: 3;
+  /* opacity: 0.65; */
 }
 
 .spotify-logo {
   width: clamp(3.5rem, 12.5vw, 6rem);
   height: auto;
+  fill: var(--clr-other-company);
 }
 
 .apple-podcast-logo {
@@ -108,17 +108,20 @@ main {
 }
 
 .email-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr 1fr;
   gap: 16px;
   order: 4;
 }
 
 .email-container input {
+  color: var(--clr-primary-accent);
+  padding-left: 1.8125rem;
   background-color: var(--clr-secondary);
   border: unset;
-  width: 327px;
-  height: 46px;
+  width: clamp(20.4375rem, 55.6vw, 26.6875rem);
+  height: clamp(2.875rem, 7.3vw, 3.5rem);
   border-radius: 28px;
   font: unset;
 }
@@ -126,7 +129,6 @@ main {
 .email-container input::placeholder {
   color: var(--clr-primary-accent);
   opacity: 0.5;
-  padding-left: 1.8125rem;
   font-family: var(--ff-primary);
   font-weight: bold;
   font-size: 0.875rem;
@@ -136,7 +138,7 @@ main {
 .email-container button {
   background-color: var(--clr-primary);
   border: unset;
-  width: 327px;
+  /* width: 327px; */
   height: 46px;
   border-radius: 28px;
   font-family: var(--ff-primary);
@@ -157,12 +159,84 @@ main {
 }
 
 .img-host {
-  /* grid-column: 1 / 4; */
   position: absolute;
   top: 0;
   right: 0;
   z-index: -1;
-  opacity: 0.05;
+  opacity: 0.1;
   mix-blend-mode: normal;
   /* display: none; */
 }
+
+@media only screen and (min-width: 40em) {
+  body {
+    background-image: url(./assets/desktop/bg-pattern-dots.svg);
+    background-repeat: no-repeat;
+    background-position: bottom left 1.875rem;
+  }
+  main {
+    padding-left: 2.4375rem;
+  }
+  .logo {
+    margin: unset;
+  }
+
+  .logo img {
+    margin: 3.125rem auto 9.5rem 0;
+  }
+
+  h1,
+  p {
+    text-align: left;
+  }
+  .main-signup-section {
+    padding-top: 5.8125rem;
+    background-color: var(--clr-bg);
+    align-items: flex-start;
+    width: clamp(39.6875rem, 82.7vw, 45.1875rem);
+  }
+
+  /* email container stuff */
+  .email-container {
+    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr;
+    gap: unset;
+    order: 3;
+  }
+
+  .email-container input {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+  }
+
+  .email-container button {
+    margin-right: 5px;
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    width: 162px;
+    justify-self: end;
+    align-self: center;
+  }
+
+  .supported-companies-logos {
+    margin: unset;
+  }
+
+  .img-host {
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 65em) {
+  .img-host {
+    top: clamp(0rem, 9.02vw, 8.125rem);
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 79.6875em) {
+}
+/* 640 switch to tablet*/
+/* 660 is when emails fit */
