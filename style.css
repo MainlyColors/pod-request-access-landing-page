@@ -276,7 +276,7 @@ main {
     margin-bottom: 6.4375rem;
   }
 }
-
+/* desktop media */
 @media only screen and (min-width: 79.6875em) {
   body {
     display: flex;
@@ -290,6 +290,10 @@ main {
 
   .img-host {
     padding-top: 130px;
+  }
+
+  .logo img {
+    margin-top: 6.4375rem;
   }
 }
 /* 640 switch to tablet*/
