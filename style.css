@@ -1,7 +1,7 @@
 :root {
-  --ff-primary: "Chivo", sans-serif;
+  --ff-primary: 'Chivo', sans-serif;
 
-  --clr-primary: hsl(157, 74%, 62%);
+  --clr-primary: #56e6af;
   --clr-secondary: #2c334b;
   --clr-bg: #121726;
   --clr-primary-accent: #fff;
@@ -159,12 +159,8 @@ main {
 }
 
 .email-container button:hover {
-  background-color: #b3ffe2;
+  background-color: #42b387;
   transition: transform 0.1s;
-}
-
-.email-container button:active {
-  transform: scale(0.95);
 }
 
 .img-host {
@@ -303,5 +299,69 @@ main {
 @media only screen and (max-height: 800px) {
   body {
     background-image: unset;
+  }
+}
+
+/* email error */
+
+.errMsg {
+  margin: unset;
+  width: unset;
+  padding-top: 0.5rem;
+  padding-left: 1.8125rem;
+  /* position: relative; */
+  color: #fb3e3e;
+  font-family: var(--ff-primary);
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 40em) {
+  .errMsg {
+    padding-left: unset;
+  }
+}
+
+.err-animate {
+  animation: shake 0.6s linear 1;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(1em);
+  }
+  40% {
+    transform: translate(-1em);
+  }
+  60% {
+    transform: translate(1em);
+  }
+  80% {
+    transform: translate(-1em);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* email success animation */
+
+.success {
+  animation: spin 1s ease-in 0.1s 1;
+  transform-style: preserve-3d;
+  transition: all 0.5s;
+}
+
+@keyframes spin {
+  0%,
+  100% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(180deg);
   }
 }
