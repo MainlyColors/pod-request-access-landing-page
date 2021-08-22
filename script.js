@@ -4,6 +4,11 @@ const emailContainer = document.querySelector('.email-container');
 const emailFieldEl = document.querySelector('.email-container input[type=email]');
 const emailSubmitBtn = document.querySelector('.email-container button');
 
+const containerMarginAdjust = function () {
+  if (window.innerWidth <= 640) return;
+  emailContainer.id === '' ? (emailContainer.id = 'margin-adjust--JS') : (emailContainer.id = '');
+};
+
 const emailErrorElCreation = function (e) {
   //guard clause - stops from over generating
   if (document.querySelector('.errMsg')) return;
@@ -16,36 +21,25 @@ const emailErrorElCreation = function (e) {
   emailError.textContent = 'Oops! Please check your email';
   emailError.classList.add('errMsg');
 
+  containerMarginAdjust();
   // insert html
   parentContainer.insertAdjacentElement('beforeend', emailError);
 };
 
-const addShakeClass = function () {
-  // remove incase of screen resize and to replay animation
-  emailFieldEl.classList.remove('err-animate');
-  emailSubmitBtn.classList.remove('err-animate');
-
+const emailAnimationToggle = function (className) {
+  emailFieldEl.classList.toggle(className);
   // 640px is when the email form grid separates
-  if (window.innerWidth <= 640) {
-    emailFieldEl.classList.add('err-animate');
-  } else {
-    emailFieldEl.classList.add('err-animate');
-    emailSubmitBtn.classList.add('err-animate');
+  if (window.innerWidth >= 640) {
+    emailSubmitBtn.classList.toggle(className);
   }
 };
 
-const addSpinClass = function () {
-  // remove incase of screen resize and to replay animation
-  emailFieldEl.classList.remove('success');
-  emailSubmitBtn.classList.remove('success');
+const addShakeClass = function () {
+  emailAnimationToggle('err-animate');
+};
 
-  // 640px is when the email form grid separates
-  if (window.innerWidth <= 640) {
-    emailFieldEl.classList.add('success');
-  } else {
-    emailFieldEl.classList.add('success');
-    emailSubmitBtn.classList.add('success');
-  }
+const addSpinClass = function () {
+  emailAnimationToggle('success');
 };
 
 const emailFormChecker = function (e) {
@@ -57,9 +51,11 @@ const emailFormChecker = function (e) {
   if (userInput.match(emailRefExp)) {
     setTimeout(() => (emailFieldEl.value = ''), 500);
     addSpinClass();
+    setTimeout(() => addSpinClass(), 1000);
   } else {
     addShakeClass();
     emailErrorElCreation(e);
+    setTimeout(() => addShakeClass(), 1000);
   }
 };
 
@@ -73,8 +69,8 @@ emailContainer.addEventListener('keydown', function (e) {
 
 // reset error message when user begins typing again
 emailFieldEl.addEventListener('input', function (e) {
-  //
   if (!document.querySelector('.errMsg')) return;
 
+  containerMarginAdjust();
   document.querySelector('.errMsg').remove();
 });

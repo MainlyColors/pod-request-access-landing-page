@@ -365,3 +365,9 @@ main {
     transform: rotateX(180deg);
   }
 }
+
+/* margin adjust */
+
+#margin-adjust--JS {
+  margin-bottom: 44px;
+}
