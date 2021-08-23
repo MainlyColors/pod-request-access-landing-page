@@ -11,12 +11,7 @@ This is a solution to the [Pod request access landing page challenge on Frontend
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -56,59 +51,71 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- Vanilla JS
+- DOM Manipulation
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+During this project I learned about Regular Expressions to validate an email address. A big help to quickly understand expressions was MDN's cheatsheet and Regex101 which lets you type out a regEx string and it will check your supplied text live so you get a grasp of what each token does.
 
-To see how you can add code snippets, see below:
+  -[MDN RegEx Cheatsheet](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet)
+  -[RegEx101](https://regex101.com/)
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+Below is an example of how I used RegEx in this project. In this function if we match our regular expression to the `emailFieldEl.value` aka the user entered string then a Success class will be applied which is just a simple spin animation. If the regular expression fails then we add a shake class with shake animation to signify to the user the email is not right. Plus a little message gets added.
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+const emailFormChecker = function (e) {
+  const userInput = emailFieldEl.value;
+  
+  const emailRefExp = new RegExp(/^\w+([\.-]?\w+)@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+
+  if (userInput.match(emailRefExp)) {
+    setTimeout(() => (emailFieldEl.value = ''), 500);
+    addSpinClass();
+    setTimeout(() => addSpinClass(), 1000);
+  } else {
+    addShakeClass();
+    emailErrorElCreation(e);
+    setTimeout(() => addShakeClass(), 1000);
+  }
+};
 }
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+To further breakdown what the RegEx is doing the above resources do a better job of explaining but ill also add my own explanation.
+This Expression can be broken down into chunks to better understand what is going on. So on the outside im using `new RegExp()` to start a new class instances of the RegExp() class. Regular expressions in javascript can be written with just "/" on either side like this `/abc/` but but creating a class instances we get access to the prototype of RegExp which contains methods created specifically for regular expressions, in this case we didn't use any but in the future we are set up if we have too. For `userInput.match(emailRefExp)` we use `.match()` which is a string method they requires regular expression as a parameter.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+```js
+  const emailRefExp = new RegExp(/^\w+([\.-]?\w+)@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+```
+Now for the actually Expression:
+  - `^\w+`  
+    - `^` is an Asseration aka give a match location and this one means "matches beginning of the input" so start at the first character.
+    - `\w` is an escaped "w", because we want to use "w" as the character class it stands for and not just "w". This will match anything in the basic latin alphabet 
+        so in this range `[A-Za-z0-9_]` with "_" included.
+    - `+` is an Quantifier, these tell how many characters to match. The + will keep matching the previous rule 1 or more times because it is "greedy".
+        - example: `/bo+/` will match: "bo", "boo", "boooooooooo"
+        - if the + had a "?" after it then it would be "non-greedy", meaning only match once.
+        - example: `/bo+?/` will match: "bo"
+  - `([\.-]?\w+)`
+    - `()` is a capturing group, anything matches with the rules inside the parenthesis's are remembered and other RegEx methods can work with these.
+    - `[]` is another group where atleast one thing withing the brackets has to match unless "?" comes after then it becomes 0 or 1 times.
+        - example: `/a[bd]c/` will match: "abc", "adc"
+    - `[\.-]?` this is saying match "." or "-" but with "?" meaning "non-greedy" so only 0-1 times.
+        - example match: ".", "-"
+  - @ is matching just the normal character "@", nothing special there
+  - `*(\.\w{2,3})+$/)`
+      - `*` is an Quantifier like +, this will match 0 or more times. this is to handle multiple TLDs (top-level-domains) so .com.net.wha
+      - `\w{2,3}` is a range, so here we want to match 2-3 normal latin alphabet characters, not just 1 because there are no 1 letter TLDs
+          - example match: ".com", ".io" not: ".c", ".comm"
+      - `$` is an Asseration like ^, this says end of the line needs to happen next, this is to stop whitespace after an email address.
+          -example match: "ry@gmail.com" not: "ry@gmail.com    "
 
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Frontend Mentor - [@ryan2505](https://www.frontendmentor.io/profile/yourusername)
+- Twitter - [@MainlyColors](https://www.twitter.com/mainlycolors)
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 
-## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
