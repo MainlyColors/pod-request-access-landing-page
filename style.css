@@ -73,6 +73,7 @@ main {
 
 .logo img {
   margin: 3.875rem auto 3.5625rem auto;
+  display: block;
 }
 .main-signup-section {
   max-height: 31.8125rem;
