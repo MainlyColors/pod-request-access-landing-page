@@ -5,11 +5,6 @@ const emailFieldEl = document.querySelector('.email-container input[type=email]'
 const emailSubmitBtn = document.querySelector('.email-container button');
 const emailLabelEl = document.querySelector('.email-container label');
 
-const labelMoveUp = function () {
-  if (emailLabelEl.id === 'move-up') return;
-  emailLabelEl.id = 'move-up';
-};
-
 const containerMarginAdjust = function () {
   if (window.innerWidth <= 640) return;
   emailContainer.id === '' ? (emailContainer.id = 'margin-adjust--JS') : (emailContainer.id = '');
@@ -34,6 +29,7 @@ const emailErrorElCreation = function (e) {
 
 const emailAnimationToggle = function (className) {
   emailFieldEl.classList.toggle(className);
+  emailLabelEl.classList.toggle(`${className}--label`);
   // 640px is when the email form grid separates
   if (window.innerWidth >= 640) {
     emailSubmitBtn.classList.toggle(className);
@@ -81,4 +77,12 @@ emailFieldEl.addEventListener('input', function (e) {
   document.querySelector('.errMsg').remove();
 });
 
-emailFieldEl.addEventListener('focus', labelMoveUp);
+emailFieldEl.addEventListener('focus', function () {
+  emailLabelEl.classList.add('focus');
+});
+
+emailFieldEl.addEventListener('blur', function () {
+  if (emailFieldEl.value === '') {
+    emailLabelEl.classList.remove('focus');
+  }
+});
