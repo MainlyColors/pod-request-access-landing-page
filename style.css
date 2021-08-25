@@ -368,44 +368,32 @@ main {
 }
 
 @keyframes shake {
-  0% {
+  0%,
+  100% {
     transform: matrix(1, 0, 0, 1, 0, 0);
   }
-  20% {
-    transform: matrix(1, 0, 0, 1, 16, 0);
-  }
-  40% {
-    transform: matrix(1, 0, 0, 1, -16, 0);
-  }
+  20%,
   60% {
     transform: matrix(1, 0, 0, 1, 16, 0);
   }
+  40%,
   80% {
     transform: matrix(1, 0, 0, 1, -16, 0);
-  }
-  100% {
-    transform: matrix(1, 0, 0, 1, 0, 0);
   }
 }
 
 @keyframes shake--label {
-  0% {
+  0%,
+  100% {
     transform: matrix(1, 0, 0, 1, 0, var(--y-offset));
   }
-  20% {
-    transform: matrix(1, 0, 0, 1, 16, var(--y-offset));
-  }
-  40% {
-    transform: matrix(1, 0, 0, 1, -16, var(--y-offset));
-  }
+  20%,
   60% {
     transform: matrix(1, 0, 0, 1, 16, var(--y-offset));
   }
+  40%,
   80% {
     transform: matrix(1, 0, 0, 1, -16, var(--y-offset));
-  }
-  100% {
-    transform: matrix(1, 0, 0, 1, 0, var(--y-offset));
   }
 }
 
