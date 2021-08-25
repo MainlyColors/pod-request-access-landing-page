@@ -3,6 +3,12 @@
 const emailContainer = document.querySelector('.email-container');
 const emailFieldEl = document.querySelector('.email-container input[type=email]');
 const emailSubmitBtn = document.querySelector('.email-container button');
+const emailLabelEl = document.querySelector('.email-container label');
+
+const labelMoveUp = function () {
+  if (emailLabelEl.id === 'move-up') return;
+  emailLabelEl.id = 'move-up';
+};
 
 const containerMarginAdjust = function () {
   if (window.innerWidth <= 640) return;
@@ -74,3 +80,5 @@ emailFieldEl.addEventListener('input', function (e) {
   containerMarginAdjust();
   document.querySelector('.errMsg').remove();
 });
+
+emailFieldEl.addEventListener('focus', labelMoveUp);

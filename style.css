@@ -120,6 +120,7 @@ main {
   grid-template-rows: 1fr 1fr;
   gap: 16px;
   order: 4;
+  align-items: center;
 }
 
 .email-container input {
@@ -131,15 +132,20 @@ main {
   height: clamp(2.875rem, 7.3vw, 3.5rem);
   border-radius: 28px;
   font: unset;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
 }
 
-.email-container input::placeholder {
+.email-container label {
   color: var(--clr-primary-accent);
+  padding-left: 1.8125rem;
   opacity: 0.5;
   font-family: var(--ff-primary);
   font-weight: bold;
   font-size: 0.875rem;
   line-height: 1.75rem;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
 }
 
 .email-container button {
@@ -153,6 +159,8 @@ main {
   line-height: 1.75rem;
   cursor: pointer;
   transition: background-color 0.2s;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
 }
 
 .email-container button:hover {
@@ -284,16 +292,16 @@ main {
   }
 
   .logo img {
-    margin-top: 6.4375rem;
+    margin-top: 6.375rem;
   }
 
   .bg-img {
     position: absolute;
     right: 0;
-    top: 457px;
+    top: 28.5625rem;
     display: block;
-    width: 232px;
-    height: 104px;
+    width: 14.5rem;
+    height: 6.5rem;
     grid-row: 2 / 3;
     grid-column: 1 / 2;
     z-index: 10;
@@ -314,6 +322,32 @@ main {
   }
 }
 
+/* email label css JS driven */
+#move-up {
+  position: relative;
+  color: hsla(0, 0%, 100%, 0.5);
+  padding-left: unset;
+  text-align: center;
+  border-radius: 10px;
+  width: 14ch;
+  transform: translateY(-30px);
+  left: 1.8125rem;
+  font-weight: normal;
+  opacity: 1;
+  z-index: 15;
+  transition: transform 0.8s;
+  animation: bg-fadeIn 0.6s linear 0.2s 1 forwards;
+}
+
+@keyframes bg-fadeIn {
+  from {
+    background-color: unset;
+  }
+  to {
+    background-color: var(--clr-bg);
+  }
+}
+
 /* email error */
 
 .errMsg {
@@ -321,7 +355,6 @@ main {
   width: unset;
   padding-top: 0.5rem;
   padding-left: 1.8125rem;
-  /* position: relative; */
   color: #fb3e3e;
   font-family: var(--ff-primary);
   font-size: 0.75rem;
