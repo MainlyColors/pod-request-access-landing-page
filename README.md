@@ -27,20 +27,27 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+- The design is fully responsive but below were the main design points
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+Mobile Layout - 320px screen width
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+![](./screenshots/mobile-layout.png)
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+Tablet Layout - 768px screen width
+
+![](./screenshots/tablet-layout.png)
+
+
+Desktop Layout - 1440px screen width
+
+![](./screenshots/desktop-layout.png)
+
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [FrontEnd Mentor Solution](https://www.frontendmentor.io/solutions/responsive-site-built-with-mostly-htmlcss-and-js-only-for-email-input-MUmownQWm)
+- Live Site URL: [Live GitHub Pages site](https://mainlycolors.github.io/pod-request-access-landing-page/)
 
 ## My process
 
